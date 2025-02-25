@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
 }
 
 .App-logo {
@@ -35,4 +39,38 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  margin: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #41B6E6;  /* Chicago Light Blue */
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #41B6E6;  /* Chicago Light Blue */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #003366;  /* Deep Blue */
 }
