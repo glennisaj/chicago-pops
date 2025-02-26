@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -10,7 +10,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
-import { locations } from '../data/locations';
+import { locationService } from '../services/locationService';
 
 // Chicago-themed colors
 const theme = {
@@ -22,12 +22,12 @@ const theme = {
   borderGray: '#E0E0E0'
 };
 
-function Header({ onSearchResult }) {
+function Header({ onLocationSelect }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     const value = event.target.value;
     setSearchTerm(value);
 
@@ -37,21 +37,21 @@ function Header({ onSearchResult }) {
       return;
     }
 
-    const filtered = locations.filter(location => 
-      location.name.toLowerCase().includes(value.toLowerCase()) ||
-      location.address.toLowerCase().includes(value.toLowerCase()) ||
-      location.description.toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearchResults(filtered);
-    setShowResults(true);
+    try {
+      const results = await locationService.searchLocations(value);
+      setSearchResults(results);
+      setShowResults(true);
+    } catch (error) {
+      console.error('Error searching locations:', error);
+      setSearchResults([]);
+    }
   };
 
   const handleLocationSelect = (location) => {
     setSearchTerm(location.name);
     setShowResults(false);
-    if (onSearchResult) {
-      onSearchResult(location);
+    if (onLocationSelect) {
+      onLocationSelect(location);
     }
   };
 

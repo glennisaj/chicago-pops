@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import Map from './components/Map';  // Note the capital M
+import Map from './components/Map';
 import './App.css';
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const handleSearchResult = (location) => {
+  const handleLocationSelect = (location) => {
     setSelectedLocation(location);
   };
 
   return (
     <div className="App">
-      <Header onSearchResult={handleSearchResult} />
+      <Header onLocationSelect={handleLocationSelect} />
       <Map selectedLocation={selectedLocation} />
     </div>
   );

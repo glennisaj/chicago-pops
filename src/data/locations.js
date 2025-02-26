@@ -5,7 +5,8 @@ export const locations = [
       address: "10 S Dearborn St",
       type: "Plaza",
       description: "Urban plaza with a fountain in the heart of the Loop",
-      coordinates: [41.8819, -87.6297]
+      latitude: 41.8819,
+      longitude: -87.6297
     },
     {
       id: 2,
@@ -13,7 +14,8 @@ export const locations = [
       address: "201 E Randolph St",
       type: "Indoor",
       description: "Indoor public space within the Boeing headquarters",
-      coordinates: [41.8847, -87.6217]
+      latitude: 41.8847,
+      longitude: -87.6217
     },
     {
       id: 3,
@@ -21,7 +23,8 @@ export const locations = [
       address: "219 S Dearborn St",
       type: "Plaza",
       description: "Open plaza featuring Alexander Calder's Flamingo sculpture",
-      coordinates: [41.8789, -87.6291]
+      latitude: 41.8789,
+      longitude: -87.6291
     },
     // Add more locations as needed
   ];
